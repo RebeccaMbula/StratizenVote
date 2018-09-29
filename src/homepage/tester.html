@@ -1,0 +1,42 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../../dependencies/bootstrap.min.css">
+
+</head>
+<body>
+    
+    <div id="ble">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top img-fluid" src="media/images/1.jpg">
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/react@16.5.2/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16.5.2/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script src="../../dependencies/jquery-3.3.1.js"></script>
+    <script src="../../dependencies/popper.min.js"></script>
+    <script src="../../dependencies/bootstrap.min.js"></script>
+    <script type="text/babel" src="js/candidate-list.js"></script>
+
+    <script type="text/babel">
+        class Card1 extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <div className="card" style={{width: "18rem"}}>
+                            <img className="card-img-top img-fluid" src="media/images/1.jpg">
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render (
+            <Card1/>,
+            document.getElementById("ble")
+        );
+
+    </script>
+</body>
+</html>
