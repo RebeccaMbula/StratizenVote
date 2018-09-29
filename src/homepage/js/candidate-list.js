@@ -50,11 +50,25 @@ var candidates = [{
 
 
 class CandidateCard extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.handleHover = this.handleHover.bind(this);
+    }
+
+    handleHover(){
+        $()
+    }
+
+    componentDidMount() {
+
+    }
+
     render(){
         return (
             <a href="#j">
                 <div className="card border-primary" style={{width: "18rem"}}>
-                    <img className="card-img-top" src={this.props.candidateImage} alt={this.props.candidateName}/>
+                    <img className="card-img-top" src={this.props.candidateImage} alt={this.props.candidateName} onhover={this.handleHover}/>
                     <div className="card-body">
                         <h5 className="card-title">
                             {this.props.candidateName}
