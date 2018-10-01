@@ -28,7 +28,7 @@ if($row['username']==$user && $row['password'] ==$password){
 	$_SESSION['username']=$row['username'];
 	/*$_SESSION['email']=$row['email'];*/
 	$_SESSION['password']=$row['password'];
-/*header("location: Home.html");*/
+// header("location: .../homepage/homepage.html");
 echo "<script type='text/javascript'>alert('Login successful');</script>";
 }
 else{
