@@ -35,7 +35,7 @@ h2
 	color: #efed40;
 	text-align: center;
 }
-.loginBox p
+.loginBox .field-label
 {
 	margin: 0;
 	padding: 0;
@@ -84,4 +84,11 @@ h2
 	font-size: 14px;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+.error-message, .error-message p {
+	font-size: 12px;
+	color: #cc0033 !important;
+	display: block;
+	margin: 0;
 }
