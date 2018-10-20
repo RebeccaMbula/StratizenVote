@@ -26,7 +26,7 @@ class Auth_model_test extends TestCase{
         $this->assertFalse($existsWithWrongPassword);
 
         $existsWithCorrectPassword = $this->obj->userAuthentic(100000, "giradifatha");
-        $this->assertTrue(is_object($existsWithCorrectPassword));
+        $this->assertTrue($existsWithCorrectPassword);
     }
 
 }

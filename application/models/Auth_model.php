@@ -28,11 +28,7 @@ class Auth_model extends CI_Model {
             password_verify($password, $student->password) :
             $password === $student->password;
 
-        if($valid) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
+        return $valid;
     }
 
     private function getStudent($studentNumber) {

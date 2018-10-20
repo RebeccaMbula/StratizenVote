@@ -21,7 +21,6 @@ class Auth extends CI_Controller {
         } else {
             echo "success";
         }
-
     }
 
     public function studentNumber_check($no) {
