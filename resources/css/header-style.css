@@ -1,0 +1,13 @@
+.navbar-brand {
+    color:   #E2472F;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .active .nav-link{
+    color: #E2472F !important;
+    font-weight: 500;
+}
+
+.my-nav {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
