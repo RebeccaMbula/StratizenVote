@@ -1,44 +1,78 @@
-// import _ from 'lodash';
-// import MediaQuery from 'react-responsive';
-import React from 'react';
 import ReactDOM from 'react-dom';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
-import CandidateCard from './candidate-card';
+import React from 'react';
+import CandidatesCarousel from './candidate-list';
 
-class Carousel extends React.Component {
+class BallotPage extends React.Component {
     constructor(props){
         super(props);
-        this.createChildren = this.createChildren.bind(this);
+
+        this.state = {
+            candidates: {},
+            isLoaded: false,
+
+            ballot: {}
+        }
+
+        this.handleCastBallot = this.handleCastBallot.bind(this);
+        this.renderCandidateCarousel = this.renderCandidateCarousel.bind(this);
     }
 
-    createChildren(){
-        let children = [];
-        for(let i = 0; i <= 10; i++) {
-            children.push(
-                <CandidateCard/>
+    componentDidMount() {
+        fetch("http://localhost/software-engineering/stratizenvote/index.php/candidatesrest_controller/candidatesbypost")
+            .then(res => res.json())
+            .then(
+                result => {
+                    this.setState({candidates: result, isLoaded: true});
+                },
+                error => {
+                    this.setState({isLoaded: true, error});
+                }
+            );
+    }
+
+    handleCastBallot(ballot) {
+        this.setState({ballot: ballot});
+    }
+
+    renderCandidateCarousel() {
+        let candidatesCarousels = [];
+        if(this.state.candidates) {
+            let candidates = this.state.candidates;
+            for (let p in candidates) {
+                if(candidates.hasOwnProperty(p)){
+                    candidatesCarousels.push(<CandidatesCarousel post={p} items={candidates[p]} onVote/>);
+                    // for(let c of candidates[p]) {
+                    //     console.log(c);
+                    // }
+                }
+            }
+        } else 
+            console.log("No candidates");
+        return candidatesCarousels;
+    }
+
+    render(){
+        
+        const {isLoaded, error, candidates, positions} = this.state;
+        if(error) {
+            return <div>Error: {error.message}</div>
+        } else if (!isLoaded) {
+            return <div>Loading...</div>
+        } else {
+            return (
+                <div>
+                    {this.renderCandidateCarousel()}
+                    <button className="btn">Cast Ballot</button>
+                </div>
             )
         }
-        return children;
-    }
-
-    render() {
-        let responsive = {
-            0: { items: 1 },
-            600: { items: 2 },
-            1024: { items: 4 },
-        }
-        return (
-            <AliceCarousel mouseDragEnabled responsive={responsive}>
-                {this.createChildren()}
-            </AliceCarousel>
-        )
+        // return <div>Hello World II</div>
     }
 }
 
 
 
 ReactDOM.render(
-    <Carousel/>,
+    <BallotPage/>,
     document.getElementById("root1")
 );

@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="<?php echo resource_url("css/vote/style.css") ?>">
 </head>
 <body>
-    <nav class="my-nav navbar navbar-expand-md bg-light sticky-top" style="z-index: 10">
-        <span class="navbar-brand col-md-2">StratizenVote</span>
+    <nav class="my-nav navbar navbar-expand-lg bg-light sticky-top" style="z-index: 10">
+        <span class="navbar-brand col-2">StratizenVote</span>
         <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#theNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>

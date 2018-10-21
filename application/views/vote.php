@@ -15,7 +15,7 @@
         </ul>
       </div>
     </nav>
-    <main id=root1 class="com-md-9 col-lg-10 ml-sm-auto"></main>
+    <main id=root1 class="col-lg-10 ml-sm-auto"></main>
   </div>
 </div>
   
