@@ -10,11 +10,12 @@ class BallotPage extends React.Component {
             candidates: {},
             isLoaded: false,
 
-            ballot: {}
+            ballot: new Map()
         }
 
-        this.handleCastBallot = this.handleCastBallot.bind(this);
+        this.handleVote = this.handleVote.bind(this);
         this.renderCandidateCarousel = this.renderCandidateCarousel.bind(this);
+        this.handleCastBallot = this.handleCastBallot.bind(this);
     }
 
     componentDidMount() {
@@ -30,8 +31,20 @@ class BallotPage extends React.Component {
             );
     }
 
-    handleCastBallot(ballot) {
+    handleVote(vote) {
+        let ballot = this.state.ballot;
+        ballot.set(vote["post"], vote["candidateId"])
         this.setState({ballot: ballot});
+        console.log(this.state.ballot);
+    }
+
+    handleCastBallot() {
+        let url = "http://localhost/software-engineering/stratizenvote/index.html/ballotrest_controler/castballot";
+        postFetch(url, this.state.ballot)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+            })
     }
 
     renderCandidateCarousel() {
@@ -40,7 +53,13 @@ class BallotPage extends React.Component {
             let candidates = this.state.candidates;
             for (let p in candidates) {
                 if(candidates.hasOwnProperty(p)){
-                    candidatesCarousels.push(<CandidatesCarousel post={p} items={candidates[p]} onVote/>);
+                    candidatesCarousels.push(
+                        <CandidatesCarousel
+                            post={p}
+                            items={candidates[p]}
+                            onVote={this.handleVote}
+                        />
+                    );
                     // for(let c of candidates[p]) {
                     //     console.log(c);
                     // }
@@ -62,7 +81,7 @@ class BallotPage extends React.Component {
             return (
                 <div>
                     {this.renderCandidateCarousel()}
-                    <button className="btn">Cast Ballot</button>
+                    <button onClick={this.handleCastBallot} className="btn cast-ballot text-light">Cast Ballot</button>
                 </div>
             )
         }
@@ -70,7 +89,12 @@ class BallotPage extends React.Component {
     }
 }
 
-
+function postFetch(url, data){
+    return fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data)
+    });
+}
 
 ReactDOM.render(
     <BallotPage/>,

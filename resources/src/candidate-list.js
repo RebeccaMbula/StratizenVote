@@ -16,6 +16,7 @@ class CandidatesCarousel extends React.Component {
         }
 
         this.renderCandidateCards = this.renderCandidateCards.bind(this);
+        this.handleVote = this.handleVote.bind(this);
     }
 
     createChildren(){
@@ -28,6 +29,15 @@ class CandidatesCarousel extends React.Component {
         return children;
     }
 
+    handleVote(candidateChosen){
+        let post = this.props.post;
+        let vote = {
+            post: post, 
+            candidateId: candidateChosen
+        };
+        this.props.onVote(vote);
+    }
+
     renderCandidateCards() {
         let candidateCards = [];
         for(let candidate of this.props.items){
@@ -36,6 +46,8 @@ class CandidatesCarousel extends React.Component {
                     thumbnail={candidate["thumbnailFileName"]}
                     candidateName={candidate["candidate_name"]}
                     shortManifesto={candidate["short_manifesto"]}
+                    id={candidate["id"]}
+                    onVote={this.handleVote}
                 />
             );
         }
@@ -56,11 +68,13 @@ class CandidatesCarousel extends React.Component {
         }
 
         return (
-            <div className="bg-light rounded">
+            <div className="bg-light rounded my-2">
                 <a className="ml-3 text-dark" style={positionLabelStyling}>{this.props.post}</a>
-                <AliceCarousel mouseDragEnabled responsive={responsive} items={this.renderCandidateCards()}>
-                    {/* {this.createChildren()} */}
-                </AliceCarousel>
+                <div className="mt-2">
+                    <AliceCarousel mouseDragEnabled responsive={responsive} items={this.renderCandidateCards()}>
+                        {/* {this.createChildren()} */}
+                    </AliceCarousel>
+                </div>
             </div>
         )
     }

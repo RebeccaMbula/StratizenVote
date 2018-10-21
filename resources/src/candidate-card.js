@@ -16,6 +16,7 @@ class CandidateCard extends React.Component {
 
         this.onMouseEnterEv = this.onMouseEnterEv.bind(this);
         this.onMouseLeaveEv = this.onMouseLeaveEv.bind(this);
+        this.handleVote = this.handleVote.bind(this);
     }
 
     onMouseEnterEv() {
@@ -28,9 +29,14 @@ class CandidateCard extends React.Component {
         console.log("Mouse left");
     }
 
+    handleVote() {
+        let candidateChosen = this.props.id;
+        this.props.onVote(candidateChosen)
+    }
+
     render() {
         return (
-            <div className="card mx-3" style={{width: "16rem"}}>
+            <div className="card mx-3" style={{width: "16rem", height: "22rem"}}>
                 <img style={{filter: this.state.mouseOver ? "brightness(70%)" : ""}} className="card-img-top" src={"/software-engineering/stratizenvote/resources/content/candidateImages/" + this.props.thumbnail}/>
                 <PosedImageOverlay onMouseEnter={this.onMouseEnterEv} onMouseLeave={this.onMouseLeaveEv} pose={this.state.mouseOver ? "reveal" : "conceal"}>
                     <div className="card-img-overlay text-light">
@@ -43,7 +49,7 @@ class CandidateCard extends React.Component {
                         <div className="card-title mx-2">
                             <h1 className="h5">{this.props.candidateName}</h1>
                         </div>
-                        <button className="btn text-light" style={{backgroundColor: "#e2472f", zIndex: "200"}}>Vote</button>
+                        <button className="btn text-light" onClick={this.handleVote} style={{backgroundColor: "#e2472f", zIndex: "200"}}>Vote</button>
                     </div>
                 </div>
             </div>
