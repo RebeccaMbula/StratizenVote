@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>	
+	<style>
+		.container {
+  width: 80%;
+  margin: 15px auto;
+}
+	button{
+		text-align: center;
+	}
+ .arrows {
+  width: 48px;
+  height: 48px;
+  border-color: #000;
+  position: absolute;
+  top: 50%;
+  margin-top: -31px;
+}
+
+.prev {
+  border-bottom: 6px solid;
+  border-left: 6px solid;
+  -webkit-transform: rotate(1deg);
+          transform: rotate(1deg);
+  left: 10px;
+}
+
+.next {
+  border-bottom: 6px solid;
+  border-left: 6px solid;
+  -webkit-transform: rotate(-1deg);
+          transform: rotate(-1deg);
+  right: 10px;
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="mySlides">
+  <h2>Presidential Candidate</h2>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+<script>
+	var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["John Waithaka", "Rebecca Mbula", "Miriam Mmboga", "Linda Ayar", "Kokach Hellen", "Hubert Kivuguto", "Kagema Maureen"],
+    datasets: [{
+      backgroundColor: [
+        "#2ecc71",
+        "#3498db",
+        "#95a5a6",
+        "#9b59b6",
+        "#f1c40f",
+        "#e74c3c",
+        "#34495e"
+      ],
+      data: [54, 24, 13, 29, 28, 24, 14]
+    }]
+  }
+});
+
+</script>
+</div>
+
+	<div class="mySlides">
+  <h2>Vice Presidential Candidate</h2>
+  <div>
+    <canvas id="myChart1"></canvas>
+  </div>
+
+<script>
+	var ctx = document.getElementById("myChart1").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["John Gachihi", "Elsie Kendi", "Peter Benson", "Jack Dawson", "Wanjiku Sazi"],
+    datasets: [{
+      backgroundColor: [
+        "#2ecc61",
+        "#3498ab",
+        "#95a5d6",
+        "#9b59c6",
+        // "#f1c40f",
+        // "#e74c3c",
+        "#34495e"
+      ],
+      data: [14, 54, 16, 34, 28]
+    }]
+  }
+});
+
+</script>
+</div>
+
+<div class="mySlides">
+  <h2>Secretary General</h2>
+  <div>
+    <canvas id="myChart2"></canvas>
+  </div>
+
+<script>
+	var ctx = document.getElementById("myChart2").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["Faith Wambui", "Sandra Nyaboke", "Mike Benson", "Jackson Mboya"],
+    datasets: [{
+      backgroundColor: [
+        "#2eac61",
+        "#3238ab",
+        "#9576d6",
+        "#f1c40f",
+        // "#f1c40f",
+        // "#e74c3c",
+        "#34995f"
+      ],
+      data: [14, 33, 16, 30]
+    }]
+  }
+});
+
+</script>
+</div>
+
+		<div class="mySlides">
+  <h2>Male Academic Representative</h2>
+  <div>
+    <canvas id="myChart3"></canvas>
+  </div>
+
+
+<script>
+	var ctx = document.getElementById("myChart3").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["Jerry Auvagha", "Steve Wamthina", "Felix Ochieng"],
+    datasets: [{
+      backgroundColor: [
+        "#2ecc71",
+        "#3498db",
+        "#34495e"
+      ],
+      data: [28, 24, 14]
+    }]
+  }
+});
+
+</script>
+</div>
+</div>
+  <button class="arrows prev"  class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="arrows next" class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+  <script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+</body>
+</html>
