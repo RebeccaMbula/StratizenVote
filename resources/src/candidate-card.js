@@ -35,8 +35,10 @@ class CandidateCard extends React.Component {
     }
 
     render() {
+        console.log("IsChosen", this.props.isChosen);
         return (
             <div className="card mx-3" style={{width: "16rem", height: "22rem"}}>
+                <div className={!this.props.isChosen ? "d-none" : ""}>Chosen</div>
                 <img style={{filter: this.state.mouseOver ? "brightness(70%)" : ""}} className="card-img-top" src={"/software-engineering/stratizenvote/resources/content/candidateImages/" + this.props.thumbnail}/>
                 <PosedImageOverlay onMouseEnter={this.onMouseEnterEv} onMouseLeave={this.onMouseLeaveEv} pose={this.state.mouseOver ? "reveal" : "conceal"}>
                     <div className="card-img-overlay text-light">
@@ -44,6 +46,9 @@ class CandidateCard extends React.Component {
                         <div className="card-text">{this.props.shortManifesto}</div>
                     </div>
                 </PosedImageOverlay>
+                <div className="card-img-overlay d-flex justify-content-center">
+                    <i className={!this.props.isChosen ? "far fa-check-circle fa-7x d-none" : "far fa-check-circle fa-7x"}></i>
+                </div>
                 <div className="card-body">
                     <div className="d-flex justify-content-between">
                         <div className="card-title mx-2">

@@ -7,6 +7,7 @@
   <title><?php $title ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?php echo resource_url("dependencies/bootstrap.min.css")?>">
+  <script src="<?php echo resource_url("dependencies/all.min.js") ?>"></script>
   <link rel="stylesheet" href="<?php echo resource_url("css/header-style.css") ?>">
   <link rel="stylesheet" href="<?php echo resource_url("css/vote/style.css") ?>">
 </head>
@@ -21,7 +22,7 @@
                 <li class="nav-item  <?php echo $pageLabel === "vote" ? "active" : "" ?>">
                     <a class="nav-link" href="#">Vote</a>
                 </li>
-                <li class="nav-item <?php echo $pageLabel === "stats" ? "active" : "" ?>">
+                <li class="nav-item <?php echo $pageLabel === "status" ? "active" : "" ?>">
                     <a class="nav-link " href="#">Stats</a>
                 </li>
             </ul>

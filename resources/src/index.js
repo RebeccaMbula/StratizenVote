@@ -44,7 +44,7 @@ class BallotPage extends React.Component {
             .then(response => response.json())
             .then(result => {
                 console.log(result);
-            })
+            });
     }
 
     renderCandidateCarousel() {
@@ -58,6 +58,7 @@ class BallotPage extends React.Component {
                             post={p}
                             items={candidates[p]}
                             onVote={this.handleVote}
+                            chosen={this.state.ballot.get(p)}
                         />
                     );
                     // for(let c of candidates[p]) {

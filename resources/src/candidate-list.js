@@ -48,6 +48,7 @@ class CandidatesCarousel extends React.Component {
                     shortManifesto={candidate["short_manifesto"]}
                     id={candidate["id"]}
                     onVote={this.handleVote}
+                    isChosen={this.props.chosen === candidate["id"]}
                 />
             );
         }
