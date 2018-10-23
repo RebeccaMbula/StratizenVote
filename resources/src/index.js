@@ -24,6 +24,7 @@ class BallotPage extends React.Component {
             .then(
                 result => {
                     this.setState({candidates: result, isLoaded: true});
+                    console.log("The result", result);
                 },
                 error => {
                     this.setState({isLoaded: true, error});
@@ -35,16 +36,23 @@ class BallotPage extends React.Component {
         let ballot = this.state.ballot;
         ballot.set(vote["post"], vote["candidateId"])
         this.setState({ballot: ballot});
-        console.log(this.state.ballot);
+        console.log("The ballot-handleVote: ", this.state.ballot);
     }
 
     handleCastBallot() {
-        let url = "http://localhost/software-engineering/stratizenvote/index.html/ballotrest_controler/castballot";
-        postFetch(url, this.state.ballot)
+        let url = "http://localhost/software-engineering/stratizenvote/index.php/ballotrest_controller/castballot.json";
+        let ballot = [];
+        for(let b of this.state.ballot.values()) ballot.push(b);
+        postFetch(url, {ballot, studentNumber})
             .then(response => response.json())
             .then(result => {
                 console.log(result);
+                if(result === "twovote")
+                    alert("You have already voted");
+                else if(result === "votedone")
+                    alert("Voting complete");
             });
+        console.log("Ballot: ", ballot);
     }
 
     renderCandidateCarousel() {
@@ -93,6 +101,8 @@ class BallotPage extends React.Component {
 function postFetch(url, data){
     return fetch(url, {
         method: "POST",
+        mode: "cors",
+        headers: {"Content-Type": "application/json; charset=utf-8"},
         body: JSON.stringify(data)
     });
 }

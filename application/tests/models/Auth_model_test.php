@@ -29,5 +29,14 @@ class Auth_model_test extends TestCase{
         $this->assertTrue($existsWithCorrectPassword);
     }
 
+    public function test_hasVoted() {
+        //100000 has voted
+        $this->assertTrue($this->obj->hasVoted(100000));
+        //101366 has not voted
+        $this->assertFalse($this->obj->hasVoted(101366));
+        //100111 does not exist
+        $this->assertEquals($this->obj->hasVoted(100111), "Error. Student number not exist");
+    }
+
 }
 ?>

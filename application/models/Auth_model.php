@@ -38,6 +38,18 @@ class Auth_model extends CI_Model {
         return $query->custom_row_object(0, "Student");
     }
 
+    public function hasVoted($studentNumber) {
+        $this->db->select("voted");
+        $this->db->where("student_no", $studentNumber);
+        $query = $this->db->get("students");
+        $hasVoted = $query->row();
+
+        if(isset($hasVoted))
+            return $query->row()->voted ? TRUE : FALSE;
+        else
+            return "Error. Student number not exist";
+    }
+
 }
 
 ?>

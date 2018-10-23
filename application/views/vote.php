@@ -18,7 +18,8 @@
     <main id=root1 class="col-lg-10 ml-sm-auto"></main>
   </div>
 </div>
-  
+<input id="stNo" type="hidden" value="<?php echo $_SESSION['studentNumber'] ?>">
+<script>const studentNumber = document.getElementById("stNo").getAttribute("value") </script>
 <script src="<?php echo resource_url("dependencies/jquery-3.3.1.js") ?>"></script>
 <script src="<?php echo resource_url("dependencies/popper.min.js") ?>"></script>
 <script src="<?php echo resource_url("dependencies/bootstrap.min.js") ?>"></script>

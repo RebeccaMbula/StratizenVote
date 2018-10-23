@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="<?php echo resource_url("dependencies/bootstrap.min.css")?>">
   <script src="<?php echo resource_url("dependencies/all.min.js") ?>"></script>
   <link rel="stylesheet" href="<?php echo resource_url("css/header-style.css") ?>">
+  <link rel="stylesheet" href="<?php echo resource_url("css/common-style.css") ?>">
   <link rel="stylesheet" href="<?php echo resource_url("css/vote/style.css") ?>">
 </head>
 <body>
@@ -20,10 +21,10 @@
         <div class="collapse navbar-collapse navbar-light" id="theNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item  <?php echo $pageLabel === "vote" ? "active" : "" ?>">
-                    <a class="nav-link" href="#">Vote</a>
+                    <a class="nav-link" href="<?php echo site_url("vote/votepage") ?>">Vote</a>
                 </li>
-                <li class="nav-item <?php echo $pageLabel === "status" ? "active" : "" ?>">
-                    <a class="nav-link " href="#">Stats</a>
+                <li class="nav-item <?php echo $pageLabel === "stats" ? "active" : "" ?>">
+                    <a class="nav-link " href="<?php echo site_url("statspage_controller/stats") ?>">Stats</a>
                 </li>
             </ul>
         </div>

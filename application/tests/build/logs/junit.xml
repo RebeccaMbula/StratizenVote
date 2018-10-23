@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Auth_model_test" file="C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\models\Auth_model_test.php" tests="2" assertions="6" failures="1" errors="0" time="0.339297">
-    <testcase name="test_studentNumberExists" class="Auth_model_test" file="C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\models\Auth_model_test.php" line="13" assertions="2" time="0.092650"/>
-    <testcase name="test_userAuthentic" class="Auth_model_test" file="C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\models\Auth_model_test.php" line="21" assertions="4" time="0.246647">
-      <failure type="PHPUnit_Framework_ExpectationFailedException">Auth_model_test::test_userAuthentic
-stdClass Object &amp;00000000368d726c00000000620584ec (
-    'studentNumber' =&gt; 100000
-    'password' =&gt; 'giradifatha'
-    'student_name' =&gt; 'Kivuguto Hubert'
-) is not instance of expected class "Student".
---- Expected
-+++ Actual
-@@ @@
--Student Object &amp;00000000368d726d00000000620584ec (
--    'studentNumber' =&gt; null
-+stdClass Object &amp;00000000368d726c00000000620584ec (
-+    'studentNumber' =&gt; 100000
-     'password' =&gt; 'giradifatha'
-     'student_name' =&gt; 'Kivuguto Hubert'
--    'student_No' =&gt; '100000'
- )
+  <testsuite name="BallotRest_Controller_test" file="C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\controllers\BallotRest_Controller_test.php" tests="1" assertions="0" failures="0" errors="1" time="0.384943">
+    <testcase name="test_castBallot" class="BallotRest_Controller_test" file="C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\controllers\BallotRest_Controller_test.php" line="5" assertions="0" time="0.384943">
+      <error type="PHPUnit_Framework_ExceptionWrapper">BallotRest_Controller_test::test_castBallot
+RuntimeException: Undefined offset: 1 on line 220 in file C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\_ci_phpunit_test\CIPHPUnitTestRequest.php
 
-C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\models\Auth_model_test.php:36
-</failure>
+C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\_ci_phpunit_test\CIPHPUnitTestCase.php:169
+C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\_ci_phpunit_test\CIPHPUnitTestRequest.php:220
+C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\_ci_phpunit_test\CIPHPUnitTestRequest.php:153
+C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\_ci_phpunit_test\CIPHPUnitTestCase.php:144
+C:\xampp2\htdocs\Software-Engineering\StratizenVote\application\tests\controllers\BallotRest_Controller_test.php:7
+</error>
     </testcase>
   </testsuite>
 </testsuites>

@@ -7,6 +7,7 @@ class Auth extends CI_Controller {
         $this->load->helper("url");
 
         $this->load->model("auth_model");
+        $this->load->library("session");
 
     }
 
@@ -16,10 +17,23 @@ class Auth extends CI_Controller {
 
         $this->form_validation->set_rules($this->array_rules());
 
+        $studentNumber = $this->input->post("username");
+
         if($this->form_validation->run() == FALSE) {
             $this->load->view("sign-in");
+        } elseif ($this->auth_model->hasVoted($studentNumber)) { //This is inefficient. Querying db twice.
+            // echo "Your have voted";
+            // sleep(50);
+            $data["pageLabel"] = "stats";
+            $data["title"] = "StratizenVote";
+            $this->load->view("templates/header", $data);
+            $this->load->view("stats");
         } else {
-            echo "success";
+            $_SESSION["studentNumber"] = $this->input->post("username");
+            $data["pageLabel"] = "vote";
+            $data["title"] = "StratizenVote";
+            $this->load->view("templates/header", $data);
+            $this->load->view("vote");
         }
     }
 
@@ -41,7 +55,9 @@ class Auth extends CI_Controller {
 
     public function passwordValid_check($password) {
         $studentNumber = $this->input->post("username");
-        return $this->auth_model->userAuthentic($studentNumber, $password);
+        $passwordValid = $this->auth_model->userAuthentic($studentNumber, $password);
+
+        return $passwordValid;
     }
 
     private function array_rules() {

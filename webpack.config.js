@@ -1,9 +1,12 @@
 const path = require("path");
 
 module.exports = {
-    entry: "./resources/src/index.js",
+    entry: {
+        bundle: "./resources/src/index.js",
+        statsCharts: "./resources/src/stats-charts.js"
+    },
     output: {
-        filename: "bundle.js",
+        filename: "[name].js",
         path: path.resolve(__dirname, "resources/dependencies/dist")
     },
     module: {
